@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', [LoginController::class, 'mostrar'])->name('login');
+
+Route::post('/login', [LoginController::class, 'autentificar']);
+
+Route::get('/registro', [RegisterController::class, 'mostrar'])->name('registro');
+
+
