@@ -1,5 +1,5 @@
 
-## instalacion
+## Instalacion
 
 El presente proyecto esta hecho con el framework laravel.
 Intalacion
