@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -23,11 +23,21 @@ class LoginController extends Controller
 
         if(Auth::attempt($credenciales)) {
             $request->session()->regenerate();
-            return redirect()->intended('welcome');
+            return redirect()->intended('/panel');
         }
 
-        return back()->withErrors([
-            'email' => 'El correo no se encuentra'
-        ])->onlyInput('email');
+        throw ValidationException::withMessages([
+            'email' => trans('auth.failed')
+        ]);
+    }
+
+    public function salir(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

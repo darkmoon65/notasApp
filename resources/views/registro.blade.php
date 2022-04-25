@@ -1,29 +1,29 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login</title>
-    </head>
-    <body>
-        <div>
+
+<x-visita>
+   <div class="row" style="display: flex; justify-content: center;align-items: center;height: 100vh;">
+        <div class="col-md-3">
             <form method="POST" action="{{ route('registro') }} ">
                 @csrf
 
                 <div>
-                    <h4>Nombre</h4>
-                    <input type="text" id="name" name="name" required autofocus/>
+                    <label>Nombre</label>
+                    <input class="form-control" type="text" id="name" name="name" required autofocus/>
                 </div>
                 <div>
-                    <h4>Email</h4>
-                    <input type="email" id="email" name="email" required/>
+                    <label>Email</label>
+                    <input class="form-control" type="email" id="email" name="email" required/>
                 </div>
                 <div>
-                    <h4>Password</h4>
-                    <input type="password" id="password" name="password" />
+                    <label>Password</label>
+                    <input class="form-control" type="password" id="password" name="password" />
                 </div>
-                <button>
-                    {{__('Registrarse')}}
-                </button>
+                <div class="d-flex justify-content-center p-2">
+                    <button class="btn btn-info" >
+                        {{__('Registrarse')}}
+                    </button>        
+                </div>
             </form>
         </div>
-    </body>
-</html>
+    </div>
+</x-visita>
+        
